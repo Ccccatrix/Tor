@@ -148,50 +148,6 @@ class Torontonian:
             Probs_C[k] = np.sum(np.multiply(Probs_A[index_A], Probs_B[index_B]))
         return Probs_C
 
-def data():
-    #from Jupyter
-    dirc = os.path.abspath('.')
-    profix = '-F16-para2'
-    names = np.load(dirc + '/names{}.npy'.format(profix))
-    results = np.load(dirc + '/results{}.npy'.format(profix))
-    binNum = 8
-
-    Pr = np.zeros((len(names), binNum+1))
-    count = np.zeros(len(names))
-    r = np.zeros(len(names))
-    g2 = np.zeros(len(names))
-    eta = np.zeros(len(names))
-
-    for i in range(len(names)):
-        cc, rr, gg = names[i].split(' ')
-        count[i] = int(cc)
-        r[i] = float(rr)
-        g2[i] = float(gg)
-
-    for i in range(len(results[0])):
-        phoNum = bin(i).count('1')  # 光子数
-        Pr[:, phoNum] += results[:, i]
-
-    index = np.array(r).argsort()
-    count = count[index]
-    r = r[index]
-    g2 = g2[index]
-    Pr = Pr[index]
-
-    # 概率归一化
-    for i in range(len(names)):
-        Pr[i] /= np.sum(Pr[i])
-
-    for i in range(0,13):
-        num = 0
-        tol = np.sum(results[i])
-        for j in range(0,256):
-            p = np.array([int(i) for i in bin(j)[2:]])
-            num = num + results[i,j] / tol * np.sum(p)
-        eta[i] = (1 / Pr[i,0] - 1)/(np.sinh(r[i])**2)
-    print(results[2])
-    return r, g2, Pr, results, eta
-
 def getNM(g2,Np):
     n = sympy.symbols('n')
     m = (Np - n)
