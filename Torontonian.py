@@ -147,8 +147,9 @@ class Torontonian:
                 index_B[i] = int(''.join(str(x) for x in events_B_list[i]), 2)
             Probs_C[k] = np.sum(np.multiply(Probs_A[index_A], Probs_B[index_B]))
         return Probs_C
-
-def getNM(g2,Np):
+    
+    @classmethod
+    def getNM(self,g2,Np):
     n = sympy.symbols('n')
     m = (Np - n)
     A = (2+n)*(2+m)*(2*n*n+2*m*m+2*m*n+3*m*m*n+3*n*n*m+m*m*n*n)
@@ -157,94 +158,7 @@ def getNM(g2,Np):
     if C.evalf(subs={n:0},n=5)<=0:
         print('C(0)=',C.evalf(subs={n:0},n=5),'|','getNM() false')
         return -1, -1
-    #sympy.plotting.plot(C,(n,0,Np))
     res = list(sympy.solveset(C,n,sympy.Interval(0,Np)))
     m = np.float64(res[0])
     n = np.float64(res[1])
     return m,n
-
-def main():
-
-    N = 8
-    T = np.zeros((N,N))
-    #T[:,0] = np.sqrt(np.array([0.1247029, 0.12980882, 0.11903195, 0.12694355, 0.12022156, 0.12561946, 0.12225477, 0.1293117]))
-    T[:,0] = np.sqrt(np.array([0.125683, 0.1268744, 0.12132301, 0.12498597, 0.12226465, 0.12375675, 0.12367739, 0.12748607]))
-    #print(np.sum(T))
-    r, g2, Pr, results, eta = data()
-    #print(eta)
-    #print(r.shape[0])
-    #print(Pr[:][0])
-
-    Pr_throry = np.zeros((Pr.shape[0], Pr.shape[1]))
-    Probs_C = np.zeros((r.shape[0], 2 ** N))
-    P_click = 12/250
-    for i in range(0,len(r)):
-
-        n_mean = np.sinh(r[i]) ** 2
-        #k_1, k_2 = getNM(g2[i]*0.98,P_click/(1 - P_click))
-        #n_mean_B = k_1/(k_1+k_2) * n_mean
-        #n_mean_A = k_2/(k_1+k_2) * n_mean
-
-        n_mean_A = n_mean
-        n_mean_B = 0
-
-        #print('[',i,']',n_mean_A, n_mean_B,eta[i])
-        if(n_mean_A == -1):
-            continue
-        #eta_i = eta[i]
-        eta_i = 0.07547561
-        A = Torontonian().sigma_Thermal(n_mean_A, N, T * np.sqrt(eta_i))
-        B = Torontonian().sigma_Thermal(n_mean_B, N, T * np.sqrt(eta_i))
-        A_ProbsAll,Eve = A.ProbsAll()
-        B_ProbsAll,Eve = B.ProbsAll()
-        Probs_C[i] = Torontonian.Prob_ABtoC(Eve,A_ProbsAll,B_ProbsAll)
-    np.save('Probs_C.npy',Probs_C)
-    
-    for j in range(0,2 ** N):
-        ProbNum = len(np.argwhere(Eve[j]))
-        Pr_throry[:, ProbNum] += Probs_C[:, j]
-    #print(Pr_throry)
-    np.save('Pr_throry.npy',Pr_throry)
-
-    TVD = np.sum(np.abs(Pr_throry - Pr))
-    return TVD
-
-def test3():
-    Eve = np.array([
-        [0,0,0],
-        [0,0,1],
-        [0,1,0],
-        [0,1,1],
-        [1,0,0],
-        [1,0,1],
-        [1,1,0],
-        [1,1,1]
-        ])
-    A_ProbsAll = np.array([0,1,0,0,0,0,0,0])
-    B_ProbsAll = np.array([0.5,0,0,0,0.5,0,0,0])
-    Probs_C = Torontonian.Prob_ABtoC(Eve,A_ProbsAll,B_ProbsAll)
-    print(Probs_C)
-
-def test():
-    r, g2, Pr, results, eta = data()
-    Pr_throry = np.load('Pr_throry.npy')
-    for i in range(len(r)):
-        for j in range(len(Pr_throry[0])):
-            print(r[i],Pr_throry[i,j],Pr[i,j],abs((Pr_throry[i,j]-Pr[i,j])/Pr[i,j]))
-        print('--------------------------------------')
-
-def test2():
-    r, g2, Pr, results, eta = data()
-    Pr_throry_1 = np.load('Pr_throry_with_g2.npy')
-    Pr_throry_2 = np.load('Pr_throry_without_g2.npy')
-    for i in range(len(r)):
-        for j in range(len(Pr[0])):
-            print(r[i],Pr_throry_1[i,j],Pr_throry_2[i,j],Pr[i,j],abs((Pr_throry_1[i,j]-Pr[i,j])/Pr[i,j]),abs((Pr_throry_2[i,j]-Pr[i,j])/Pr[i,j]))
-        print('--------------------------------------')
-
-if __name__=='__main__':
-    data()
-    #main()
-    #test()
-    #print('----------------------------------------------------------------------------')
-    #test2()
