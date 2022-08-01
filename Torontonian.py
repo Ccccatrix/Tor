@@ -1,15 +1,12 @@
 import numpy as np
-import math
 import os
 import sympy
-from itertools import combinations
 from thewalrus import tor
-from thewalrus import threshold_detection_prob
 from tqdm import tqdm
 from numba import jit
 
 class Torontonian:
-
+    
     def A_s_tor(self,A,S):
         N = len(S)
         index_0 = np.argwhere(S)
@@ -150,15 +147,15 @@ class Torontonian:
     
     @classmethod
     def getNM(self,g2,Np):
-    n = sympy.symbols('n')
-    m = (Np - n)
-    A = (2+n)*(2+m)*(2*n*n+2*m*m+2*m*n+3*m*m*n+3*n*n*m+m*m*n*n)
-    B = (1+n)*(1+m)*(2*n+2*m+m*n)*(2*n+2*m+m*n)
-    C = ((A)/(B)-g2)
-    if C.evalf(subs={n:0},n=5)<=0:
-        print('C(0)=',C.evalf(subs={n:0},n=5),'|','getNM() false')
-        return -1, -1
-    res = list(sympy.solveset(C,n,sympy.Interval(0,Np)))
-    m = np.float64(res[0])
-    n = np.float64(res[1])
-    return m,n
+        n = sympy.symbols('n')
+        m = (Np - n)
+        A = (2+n)*(2+m)*(2*n*n+2*m*m+2*m*n+3*m*m*n+3*n*n*m+m*m*n*n)
+        B = (1+n)*(1+m)*(2*n+2*m+m*n)*(2*n+2*m+m*n)
+        C = ((A)/(B)-g2)
+        if C.evalf(subs={n:0},n=5)<=0:
+            print('C(0)=',C.evalf(subs={n:0},n=5),'|','getNM() false')
+            return -1, -1
+        res = list(sympy.solveset(C,n,sympy.Interval(0,Np)))
+        m = np.float64(res[0])
+        n = np.float64(res[1])
+        return m,n
