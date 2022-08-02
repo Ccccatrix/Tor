@@ -91,6 +91,8 @@
  
  选取 $\sigma$ 的 $[m_0,m_1,...,m_k,m_0+\ell,m_1+\ell...,m_k+\ell]$ 行和列交叉的元素作为子矩阵, 可得到子模式 $[m_0,m_1,...,m_k]$ 的 $\sigma$
  
+ 特别的，对于**相干态**而言，其概率分布有简化形式 $^{[3]}$
+ 
 ---
 ## Reference
 [1] Madsen, Lars S., et al. "Quantum computational advantage with a programmable photonic processor." Nature 606.7912 (2022): 75-81.
