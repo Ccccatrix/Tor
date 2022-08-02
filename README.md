@@ -30,8 +30,16 @@
  
  对于光子数可分辨探测器 ${[1]}$ (eg: PNR)
  
+  $$
+   A = X(\mathbb{1}-\sigma^{-1})
+  $$
+ 
  $$
-  1
+  X = 
+  \begin{pmatrix}
+  0 & \mathbb{1}
+  \mathbb{1} & 0
+  \end{pmatrix}
  $$
  
  对于阈值探测器 ${[2]}$ (eg: SNSPD)
