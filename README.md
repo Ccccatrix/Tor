@@ -85,9 +85,11 @@
   __{O_S}__=\mathbb{__I___{\mathrm{2}\ell}} - __{(\sigma^{-1})_{S}}__
  $$
  
-  $$
+ $$
   {\rm Prob}({__S__})=\frac{{\rm Tor}( __{O_S}__ )}{\sqrt{{\rm det}__{\sigma}__}}
  $$
+ 
+ 选取 $\sigma$ $[m_0,m_1,...,m_k,m_0+\ell,m_1+\ell...,m_k+\ell]$ 行和列交叉的元素作为子矩阵, 可得到子模式 $[m_0,m_1,...,m_k]$ 的 $\sigma$
  
 ---
 ## Reference
