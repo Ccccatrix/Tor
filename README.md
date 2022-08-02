@@ -1,6 +1,6 @@
 # Gaussian boson sampling
----
 ## 1 Introduction
+---
 ### Gaussian State
  对于一个 $\ell$ 模式的高斯态，可用 $2\ell × 2\ell$ 的协方差矩阵来描述
  
@@ -28,6 +28,17 @@
   \end{pmatrix}+\frac{1}{2}\mathbb{__I___{\mathrm{2}\ell}}
  $$
  
+ 
+ 常见的几种高斯态: 
+ 
+ $$n_{\rm squeezed} = \sinh^2{r},~m_{\rm squeezed}=\cosh^2{r},~d_{\rm squeezed}=0$$
+ 
+ $$n_{\rm thermal} = \bar{n},~m_{\rm thermal}=0,~d_{\rm thermal}=0$$
+ 
+ $$n_{\rm squashed} = \bar{n},~m_{\rm squashed}=\bar{n},~d_{\rm squashed}=0$$
+ 
+ $$n_{\rm coherent} = 0,~m_{\rm coherent}=0,~d_{\rm coherent}=\beta$$
+ 
  对于**光子数可分辨探测器** $^{[1]}$ (eg: PNR)
  
   $$
@@ -49,20 +60,12 @@
  对于**阈值探测器** $^{[2]}$ (eg: SNSPD)
  
  $$
-  1
+  __{O_S}__=\mathbb{__I___{\mathrm{2}\ell}} - __{(\sigma^{-1})_{S}}__
  $$
  
- 常见的几种高斯态: 
- 
- $$n_{\rm squeezed} = \sinh^2{r},~m_{\rm squeezed}=\cosh^2{r},~d_{\rm squeezed}=0$$
- 
- $$n_{\rm thermal} = \bar{n},~m_{\rm thermal}=0,~d_{\rm thermal}=0$$
- 
- $$n_{\rm squashed} = \bar{n},~m_{\rm squashed}=\bar{n},~d_{\rm squashed}=0$$
- 
- $$n_{\rm coherent} = 0,~m_{\rm coherent}=0,~d_{\rm coherent}=\beta$$
- 
- 
+  $$
+  {\rm Prob}({__S__})=\frac{{\rm Tor}( __{O_S}__ )}{\sqrt{{\rm det}__{\sigma}__}}
+ $$
  
 ---
 ## Reference
