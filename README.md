@@ -1,8 +1,8 @@
 # Gaussian boson sampling
-
+---
 ## 1 Introduction
 ### Gaussian State
- 对于一个 N 模式的高斯态，可用 2N×2N 的协方差矩阵来描述
+ 对于一个 $\ell$ 模式的高斯态，可用 $2\ell × 2\ell$ 的协方差矩阵来描述
  
  $$d_{i} = \braket{a_{i}}$$
  
@@ -18,31 +18,35 @@
   
   $$m^{\rm out} = Tm^{\rm in}T^{T}$$
   
- 对应的协方差矩阵为
+ 对应的协方差矩阵 $\sigma$ 为
  
  $$
-  \sigma = 
+  __\sigma__ = 
   \begin{pmatrix}
-   n & m\\
-   m^* & n*
-  \end{pmatrix}+\frac{1}{2}\mathbb{1}
+   __n & m\\
+   m^* & n*__
+  \end{pmatrix}+\frac{1}{2}\mathbb{__I___{\mathrm{2}\ell}}
  $$
  
- 对于光子数可分辨探测器 ${[1]}$ (eg: PNR)
+ 对于**光子数可分辨探测器** $^{[1]}$ (eg: PNR)
  
   $$
-   A = X(\mathbb{1}-\sigma^{-1})
+   __A__ = __X___{2\ell}(\mathbb{__I___{\mathrm{2}\ell}} - __\sigma__^{-1})
   $$
  
  $$
-  X = 
+  __X___{2\ell} = 
   \begin{pmatrix}
-  0 & \mathbb{1}
-  \mathbb{1} & 0
+  0 & \mathbb{__I___{\ell}} \\
+  \mathbb{__I___{\ell}} & 0 \\
   \end{pmatrix}
  $$
  
- 对于阈值探测器 ${[2]}$ (eg: SNSPD)
+ $$
+ {\rm Prob}({__S__})=\frac{1}{\sqrt{{\rm det}(__\sigma__)}} \frac{{\rm Haf}(__{A_{S}}__)}{\prod\nolimits_{i=1}^{\ell}S_i!}
+ $$
+ 
+ 对于**阈值探测器** $^{[2]}$ (eg: SNSPD)
  
  $$
   1
