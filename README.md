@@ -1,0 +1,3 @@
+# Tor
+* 此项目用于计算GBS的Torontonian
+* 未完待续...
