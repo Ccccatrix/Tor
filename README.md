@@ -1,6 +1,6 @@
 # Gaussian boson sampling
-## 1 Introduction
 ---
+## 1 Introduction
 ### Gaussian State
  对于一个 $\ell$ 模式的高斯态，可用 $2\ell × 2\ell$ 的协方差矩阵来描述
  
@@ -9,14 +9,6 @@
  $$n_{ij} = \braket{a_{i}^{\dagger}a_{j}} - d_{i}^* d_{j}$$
  
  $$m_{ij} = \braket{a_{i}a_{j}} - d_{i}d_{j}$$
- 
- 经过干涉仪矩阵T (可以是非酉矩阵) 的变换后
- 
-  $$d^{\rm out} = Td^{\rm in}$$
-  
-  $$n^{\rm out} = T^* n^{\rm in}T^{T}$$
-  
-  $$m^{\rm out} = Tm^{\rm in}T^{T}$$
   
  对应的协方差矩阵 $\sigma$ 为
  
@@ -28,6 +20,36 @@
   \end{pmatrix}+\frac{1}{2}\mathbb{__I___{\mathrm{2}\ell}}
  $$
  
+ 经过干涉仪矩阵T (可以是非酉矩阵) 的变换后
+ 
+ $$d^{\rm out} = Td^{\rm in}$$
+  
+ $$n^{\rm out} = T^* n^{\rm in}T^{T}$$
+  
+ $$m^{\rm out} = Tm^{\rm in}T^{T}$$
+ 
+ $$
+ __\sigma__ = \mathbb{__I___{\mathrm{2}\ell}}
+ -\frac{1}{2}
+ \begin{pmatrix}
+ T & 0 \\
+ 0 & T^*
+ \end{pmatrix}
+ \begin{pmatrix}
+ T^{\dagger} & 0 \\
+ 0 & T^T
+ \end{pmatrix}
+ +
+ \begin{pmatrix}
+ T & 0 \\
+ 0 & T^*
+ \end{pmatrix}
+ \sigma_{in}
+ \begin{pmatrix}
+ T^{\dagger} & 0 \\
+ 0 & T^T
+ \end{pmatrix}
+ $$
  
  常见的几种高斯态: 
  
