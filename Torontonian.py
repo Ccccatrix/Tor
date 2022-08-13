@@ -338,9 +338,6 @@ def main(k):
 
     N = 8
     T = np.zeros((N,N))
-    #T[:,0] = np.sqrt(np.array([0.13372587,0.12251623,0.12846983,0.1198264,0.12912523,0.11829967,0.1307555,0.12195197]))
-
-    #Pr= data_2()
     Pr, Pr_Pi_0=data()
 
     Pr_throry = np.zeros((Pr.shape[0], Pr.shape[1]))
