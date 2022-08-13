@@ -187,53 +187,7 @@ class Torontonian:
     @classmethod
     def click_events(self,Z):
         return _click_events(Z)
-
-def data_2():
-    dirc = os.path.abspath('.')
-    profix = '-F16-paraG'
-    names = np.load(dirc + '/names{}.npy'.format(profix))
-    results = np.load(dirc + '/results{}.npy'.format(profix))
-    binNum = 8
-    print(results.shape)
-    Pr = np.zeros((len(names), binNum+1))
-    degree = np.zeros(len(names))
-    trans = np.zeros(len(names))
-    #print([np.sum(i) for i in results])
-    print(names)
-    #for i in range(len(names)):
-    #    dd, tt = names[i].split(' ')
-    #    degree[i] = int(dd)
-    #    trans[i] = float(tt)
     
-    for i in range(len(results[0])):
-        phoNum = bin(i).count('1')  # 光子数
-        Pr[:, phoNum] += results[:, i]
-
-    index = np.array(trans).argsort()
-    degree = degree[index]
-    trans = trans[index]
-    Pr = Pr[index]
-    print(Pr[0])
-    g2 = 1.88376376
-    R = 2.32502
-    n_mean = np.sinh(R)**2
-    P_click = 12/250
-    k_1, k_2 = getNM(g2, P_click/(1 - P_click)*2)
-    n = k_1/(k_1+k_2) * n_mean
-    m = k_2/(k_1+k_2) * n_mean
-
-    # 概率归一化
-    for i in range(len(names)):
-        Pr[i] /= np.sum(Pr[i])
-
-    #取后五个数据点
-    sub = 5
-    N = len(Pr)
-    Pr = Pr[N-sub:N]
-    trans = trans[N-sub:N]
-
-    return Pr
-
 def data():
     dirc = os.path.abspath('.')
     profix = '0812-F5'
