@@ -94,7 +94,7 @@
  特别的，对于**相干态**而言，其概率分布有简化形式 $^{[3]}$
  
  $$
-  {\rm Prob}({__S__})=\frac{e^{-\sum_{j}d_j}}{\bar{n}!}
+  {\rm Prob}({__S__})=\frac{e^{-\sum_{j}\vert d_j\vert^2}}{\bar{n}!}\prod_{j=1}^{N}\vert d_j\vert^{2n_j}
  $$
  
 ---
