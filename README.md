@@ -93,6 +93,10 @@
  
  特别的，对于**相干态**而言，其概率分布有简化形式 $^{[3]}$
  
+ $$
+  {\rm Prob}({__S__})=\frac{e^{-\sum_{j}d_j}}{\bar{n}!}
+ $$
+ 
 ---
 ## Reference
 [1] Madsen, Lars S., et al. "Quantum computational advantage with a programmable photonic processor." Nature 606.7912 (2022): 75-81.
